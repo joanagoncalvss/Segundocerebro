@@ -28,113 +28,47 @@ function useStorage(key, initial) {
       return stored ? JSON.parse(stored) : initial;
     } catch { return initial; }
   });
-
   const save = (v) => {
     setVal(v);
-    try {
-      localStorage.setItem(key, JSON.stringify(v));
-    } catch (e) {
-      console.error("Erro ao salvar:", e);
-    }
+    try { localStorage.setItem(key, JSON.stringify(v)); }
+    catch (e) { console.error("Erro ao salvar:", e); }
   };
-
   return [val, save];
 }
 
 const S = {
-  app: {
-    background: "#F7F5F2",
-    minHeight: "100vh",
-    fontFamily: "'Inter', sans-serif",
-    fontWeight: 300,
-    color: "#2E2B28",
-    padding: "32px 16px 80px",
-  },
+  app: { background: "#F7F5F2", minHeight: "100vh", fontFamily: "'Inter', sans-serif", fontWeight: 300, color: "#2E2B28", padding: "32px 16px 80px" },
   wrap: { maxWidth: 680, margin: "0 auto" },
-  eyebrow: {
-    fontSize: 11, letterSpacing: "0.15em", textTransform: "uppercase",
-    color: "#A89880", marginBottom: 8,
-  },
-  title: {
-    fontFamily: "'Lora', serif", fontSize: 34, fontWeight: 400,
-    color: "#2E2B28", lineHeight: 1.15, marginBottom: 8,
-  },
+  eyebrow: { fontSize: 11, letterSpacing: "0.15em", textTransform: "uppercase", color: "#A89880", marginBottom: 8 },
+  title: { fontFamily: "'Lora', serif", fontSize: 34, fontWeight: 400, color: "#2E2B28", lineHeight: 1.15, marginBottom: 8 },
   sub: { fontSize: 13, color: "#8C8078", lineHeight: 1.6, marginBottom: 32 },
-  ritualBox: {
-    background: "#EDEAE4", borderRadius: 14, padding: "20px 22px", marginBottom: 32,
-  },
-  ritualLabel: {
-    fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase",
-    color: "#A89880", marginBottom: 12,
-  },
+  ritualBox: { background: "#EDEAE4", borderRadius: 14, padding: "20px 22px", marginBottom: 32 },
+  ritualLabel: { fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", color: "#A89880", marginBottom: 12 },
   ritualRow: { display: "flex", gap: 12, marginBottom: 8, alignItems: "flex-start" },
   ritualN: { fontSize: 11, color: "#A89880", minWidth: 14, paddingTop: 1 },
   ritualText: { fontSize: 13, color: "#5C5450", lineHeight: 1.55 },
   nav: { display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 36 },
-  navBtn: (active) => ({
-    padding: "7px 16px", borderRadius: 20,
-    border: `1px solid ${active ? "#2E2B28" : "#D4C9BC"}`,
-    background: active ? "#2E2B28" : "transparent",
-    color: active ? "#F7F5F2" : "#8C8078",
-    fontSize: 12, cursor: "pointer", fontFamily: "inherit",
-    transition: "all 0.18s",
-  }),
+  navBtn: (active) => ({ padding: "7px 16px", borderRadius: 20, border: `1px solid ${active ? "#2E2B28" : "#D4C9BC"}`, background: active ? "#2E2B28" : "transparent", color: active ? "#F7F5F2" : "#8C8078", fontSize: 12, cursor: "pointer", fontFamily: "inherit", transition: "all 0.18s" }),
   fonteHeader: { display: "flex", alignItems: "center", gap: 12, marginBottom: 28 },
   fonteDot: (cor) => ({ width: 10, height: 10, borderRadius: "50%", background: cor, flexShrink: 0 }),
   fonteNome: { fontFamily: "'Lora', serif", fontSize: 22, fontWeight: 400 },
   fonteTipo: { fontSize: 11, color: "#A89880", letterSpacing: "0.1em", textTransform: "uppercase", marginTop: 2 },
-  card: {
-    background: "#fff", borderRadius: 14, padding: "22px 22px 18px",
-    marginBottom: 14, border: "1px solid #EDE8E2",
-  },
+  card: { background: "#fff", borderRadius: 14, padding: "22px 22px 18px", marginBottom: 14, border: "1px solid #EDE8E2" },
   cardTop: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 18 },
   cardData: { fontSize: 11, color: "#A89880", letterSpacing: "0.08em" },
   cardNum: { fontSize: 11, color: "#C9BFB4" },
-  fieldLabel: {
-    fontSize: 10, letterSpacing: "0.12em", textTransform: "uppercase",
-    color: "#A89880", marginBottom: 5, marginTop: 16,
-  },
-  fieldInput: {
-    width: "100%", border: "none", borderBottom: "1px solid #EDE8E2",
-    background: "transparent", fontFamily: "'Inter', sans-serif",
-    fontSize: 13, fontWeight: 300, color: "#2E2B28",
-    padding: "6px 0", outline: "none", lineHeight: 1.6,
-    resize: "none", boxSizing: "border-box",
-  },
-  btnSalvar: {
-    marginTop: 18, padding: "9px 22px", background: "#2E2B28",
-    color: "#F7F5F2", border: "none", borderRadius: 8,
-    fontSize: 12, cursor: "pointer", fontFamily: "inherit",
-  },
-  btnEditar: {
-    marginTop: 18, padding: "8px 18px", background: "transparent",
-    color: "#A89880", border: "1px solid #D4C9BC", borderRadius: 8,
-    fontSize: 12, cursor: "pointer", fontFamily: "inherit",
-  },
-  btnNova: {
-    width: "100%", padding: 14, border: "1.5px dashed #D4C9BC",
-    borderRadius: 12, background: "transparent", fontFamily: "inherit",
-    fontSize: 12, color: "#A89880", cursor: "pointer", marginTop: 4,
-  },
+  fieldLabel: { fontSize: 10, letterSpacing: "0.12em", textTransform: "uppercase", color: "#A89880", marginBottom: 5, marginTop: 16 },
+  fieldInput: { width: "100%", border: "none", borderBottom: "1px solid #EDE8E2", background: "transparent", fontFamily: "'Inter', sans-serif", fontSize: 13, fontWeight: 300, color: "#2E2B28", padding: "6px 0", outline: "none", lineHeight: 1.6, resize: "none", boxSizing: "border-box" },
+  btnSalvar: { padding: "9px 22px", background: "#2E2B28", color: "#F7F5F2", border: "none", borderRadius: 8, fontSize: 12, cursor: "pointer", fontFamily: "inherit" },
+  btnEditar: { padding: "8px 18px", background: "transparent", color: "#A89880", border: "1px solid #D4C9BC", borderRadius: 8, fontSize: 12, cursor: "pointer", fontFamily: "inherit" },
+  btnNova: { width: "100%", padding: 14, border: "1.5px dashed #D4C9BC", borderRadius: 12, background: "transparent", fontFamily: "inherit", fontSize: 12, color: "#A89880", cursor: "pointer", marginTop: 4 },
   ytRow: { display: "flex", gap: 10, alignItems: "flex-start", padding: "12px 0", borderBottom: "1px solid #EDE8E2" },
   ytDot: { width: 6, height: 6, borderRadius: "50%", background: "#D4C9BC", flexShrink: 0, marginTop: 6 },
-  ytInput: (small) => ({
-    border: "none", background: "transparent", fontFamily: "inherit",
-    fontSize: small ? 11 : 13, fontWeight: 300, color: small ? "#8C8078" : "#2E2B28",
-    outline: "none", width: "100%", padding: "3px 0",
-    borderBottom: small ? "none" : "1px solid #EDE8E2",
-  }),
+  ytInput: (small) => ({ border: "none", background: "transparent", fontFamily: "inherit", fontSize: small ? 11 : 13, fontWeight: 300, color: small ? "#8C8078" : "#2E2B28", outline: "none", width: "100%", padding: "3px 0", borderBottom: small ? "none" : "1px solid #EDE8E2" }),
   revisitarRow: { display: "flex", gap: 10, alignItems: "flex-start", padding: "12px 0", borderBottom: "1px solid #EDE8E2" },
   check: { width: 16, height: 16, marginTop: 2, accentColor: "#2E2B28", flexShrink: 0, cursor: "pointer" },
-  revisitarInput: {
-    flex: 1, border: "none", background: "transparent", fontFamily: "inherit",
-    fontSize: 13, fontWeight: 300, color: "#2E2B28", outline: "none",
-    resize: "none", minHeight: 20, lineHeight: 1.5,
-  },
-  semanaCard: {
-    background: "#fff", borderRadius: 14, padding: "22px 22px 18px",
-    marginBottom: 14, border: "1px solid #EDE8E2",
-  },
+  revisitarInput: { flex: 1, border: "none", background: "transparent", fontFamily: "inherit", fontSize: 13, fontWeight: 300, color: "#2E2B28", outline: "none", resize: "none", minHeight: 20, lineHeight: 1.5 },
+  semanaCard: { background: "#fff", borderRadius: 14, padding: "22px 22px 18px", marginBottom: 14, border: "1px solid #EDE8E2" },
   semanatop: { display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 16 },
   semanatitle: { fontFamily: "'Lora', serif", fontSize: 17, fontWeight: 400 },
   semanaData: { fontSize: 11, color: "#A89880" },
@@ -143,14 +77,9 @@ const S = {
 function AutoTextarea({ value, onChange, placeholder, disabled, style }) {
   const ref = useRef();
   useEffect(() => {
-    if (ref.current) {
-      ref.current.style.height = "auto";
-      ref.current.style.height = ref.current.scrollHeight + "px";
-    }
+    if (ref.current) { ref.current.style.height = "auto"; ref.current.style.height = ref.current.scrollHeight + "px"; }
   }, [value]);
-  return (
-    <textarea ref={ref} value={value} onChange={onChange} placeholder={placeholder} disabled={disabled} style={{ ...style, minHeight: 60 }} rows={1} />
-  );
+  return <textarea ref={ref} value={value} onChange={onChange} placeholder={placeholder} disabled={disabled} style={{ ...style, minHeight: 60 }} rows={1} />;
 }
 
 function MapaUpload({ value, onChange, disabled }) {
@@ -172,8 +101,22 @@ function MapaUpload({ value, onChange, disabled }) {
 
 function Sessao({ sessao, index, onUpdate, onSave, onEdit }) {
   const saved = sessao.saved;
+  const [aberta, setAberta] = useState(!saved);
+
+  if (saved && !aberta) {
+    return (
+      <div onClick={() => setAberta(true)} style={{ ...S.card, cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px 22px" }}>
+        <div>
+          <div style={{ fontSize: 11, color: "#A89880", marginBottom: 4 }}>{sessao.data}</div>
+          <div style={{ fontSize: 14, color: "#2E2B28", fontWeight: 400 }}>{sessao.tema || "Sessão " + (index + 1)}</div>
+        </div>
+        <div style={{ fontSize: 11, color: "#C9BFB4" }}>▸</div>
+      </div>
+    );
+  }
+
   return (
-    <div style={{ ...S.card, opacity: saved ? 0.75 : 1 }}>
+    <div style={S.card}>
       <div style={S.cardTop}>
         <span style={S.cardData}>{sessao.data}</span>
         <span style={S.cardNum}>Sessão {index + 1}{saved ? " · salvo" : ""}</span>
@@ -190,7 +133,12 @@ function Sessao({ sessao, index, onUpdate, onSave, onEdit }) {
       ))}
       <div style={S.fieldLabel}>Mapa mental</div>
       <MapaUpload value={sessao.mapa} disabled={saved} onChange={v => onUpdate("mapa", v)} />
-      {!saved ? <button style={S.btnSalvar} onClick={onSave}>Salvar sessão</button> : <button style={S.btnEditar} onClick={onEdit}>Editar</button>}
+      <div style={{ display: "flex", gap: 10, marginTop: 18 }}>
+        {!saved
+          ? <button style={S.btnSalvar} onClick={onSave}>Salvar sessão</button>
+          : <><button style={S.btnEditar} onClick={onEdit}>Editar</button><button style={S.btnEditar} onClick={() => setAberta(false)}>Minimizar</button></>
+        }
+      </div>
     </div>
   );
 }
@@ -205,10 +153,7 @@ function FontePage({ fonte, dados, onChange }) {
     <div>
       <div style={S.fonteHeader}>
         <div style={S.fonteDot(fonte.cor)} />
-        <div>
-          <div style={S.fonteNome}>{fonte.nome}</div>
-          <div style={S.fonteTipo}>{fonte.tipo}</div>
-        </div>
+        <div><div style={S.fonteNome}>{fonte.nome}</div><div style={S.fonteTipo}>{fonte.tipo}</div></div>
       </div>
       {sessoes.map((s, i) => <Sessao key={i} sessao={s} index={i} onUpdate={(k, v) => updateSessao(i, k, v)} onSave={() => salvarSessao(i)} onEdit={() => editarSessao(i)} />)}
       <button style={S.btnNova} onClick={novaSessao}>+ Nova sessão</button>
@@ -222,10 +167,7 @@ function YoutubePage({ dados, onChange }) {
   const adicionar = () => onChange({ ...dados, itens: [...itens, { canal: "", insight: "" }] });
   return (
     <div>
-      <div style={S.fonteHeader}>
-        <div style={S.fonteDot("#C4614A")} />
-        <div><div style={S.fonteNome}>YouTube</div><div style={S.fonteTipo}>Victor Sales · Gabriel Tortella · outros</div></div>
-      </div>
+      <div style={S.fonteHeader}><div style={S.fonteDot("#C4614A")} /><div><div style={S.fonteNome}>YouTube</div><div style={S.fonteTipo}>Victor Sales · Gabriel Tortella · outros</div></div></div>
       <div style={S.card}>
         {itens.map((it, i) => (
           <div key={i} style={S.ytRow}>
@@ -248,10 +190,7 @@ function RevisitarPage({ dados, onChange }) {
   const adicionar = () => onChange({ ...dados, itens: [...itens, { texto: "", feito: false }] });
   return (
     <div>
-      <div style={S.fonteHeader}>
-        <div style={S.fonteDot("#A89880")} />
-        <div><div style={S.fonteNome}>Revisitar</div><div style={S.fonteTipo}>Insights que merecem mais atenção</div></div>
-      </div>
+      <div style={S.fonteHeader}><div style={S.fonteDot("#A89880")} /><div><div style={S.fonteNome}>Revisitar</div><div style={S.fonteTipo}>Insights que merecem mais atenção</div></div></div>
       <div style={S.card}>
         {itens.map((it, i) => (
           <div key={i} style={S.revisitarRow}>
@@ -273,21 +212,17 @@ function SemanaPage({ dados, onChange }) {
   const editar = (i) => onChange({ ...dados, semanas: semanas.map((s, idx) => idx === i ? { ...s, saved: false } : s) });
   return (
     <div>
-      <div style={S.fonteHeader}>
-        <div style={S.fonteDot("#B89A5A")} />
-        <div><div style={S.fonteNome}>O que aprendi esta semana</div><div style={S.fonteTipo}>Preencher todo domingo</div></div>
-      </div>
+      <div style={S.fonteHeader}><div style={S.fonteDot("#B89A5A")} /><div><div style={S.fonteNome}>O que aprendi esta semana</div><div style={S.fonteTipo}>Preencher todo domingo</div></div></div>
       {semanas.map((s, i) => (
         <div key={i} style={{ ...S.semanaCard, opacity: s.saved ? 0.75 : 1 }}>
-          <div style={S.semanatop}>
-            <span style={S.semanatitle}>Semana {i + 1}</span>
-            <span style={S.semanaData}>{s.data}</span>
-          </div>
+          <div style={S.semanatop}><span style={S.semanatitle}>Semana {i + 1}</span><span style={S.semanaData}>{s.data}</span></div>
           <div style={S.fieldLabel}>O que aprendi esta semana</div>
           <AutoTextarea value={s.aprendi} placeholder="3 a 5 frases livres. O que realmente ficou?" disabled={s.saved} onChange={e => update(i, "aprendi", e.target.value)} style={{ ...S.fieldInput, minHeight: 70 }} />
           <div style={S.fieldLabel}>Como mudou algo em mim ou na minha rotina?</div>
           <AutoTextarea value={s.mudou} placeholder="Uma frase já conta." disabled={s.saved} onChange={e => update(i, "mudou", e.target.value)} style={{ ...S.fieldInput, minHeight: 44 }} />
-          {!s.saved ? <button style={S.btnSalvar} onClick={() => salvar(i)}>Salvar semana</button> : <button style={S.btnEditar} onClick={() => editar(i)}>Editar</button>}
+          <div style={{ marginTop: 18 }}>
+            {!s.saved ? <button style={S.btnSalvar} onClick={() => salvar(i)}>Salvar semana</button> : <button style={S.btnEditar} onClick={() => editar(i)}>Editar</button>}
+          </div>
         </div>
       ))}
       <button style={S.btnNova} onClick={nova}>+ Nova semana</button>
@@ -314,12 +249,7 @@ export default function App() {
         <div style={S.sub}>Capture o que aprende. Revise o que importa. Evolua com intenção.</div>
         <div style={S.ritualBox}>
           <div style={S.ritualLabel}>Ritual de cada sessão</div>
-          {RITUAL.map((r, i) => (
-            <div key={i} style={S.ritualRow}>
-              <span style={S.ritualN}>{i + 1}</span>
-              <span style={S.ritualText}>{r}</span>
-            </div>
-          ))}
+          {RITUAL.map((r, i) => (<div key={i} style={S.ritualRow}><span style={S.ritualN}>{i + 1}</span><span style={S.ritualText}>{r}</span></div>))}
         </div>
         <nav style={S.nav}>
           {FONTES.map(f => <button key={f.id} style={S.navBtn(aba === f.id)} onClick={() => setAba(f.id)}>{f.nome}</button>)}
