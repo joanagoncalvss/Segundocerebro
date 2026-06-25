@@ -1,0 +1,16 @@
+{
+  "name": "Segundo Cérebro",
+  "short_name": "Estudos",
+  "description": "Sprint 90 dias — capture o que aprende",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F7F5F2",
+  "theme_color": "#F7F5F2",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
